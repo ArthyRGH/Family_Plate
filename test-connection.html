@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supabase Connection Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+    .result-box {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+    .success {
+      color: green;
+      font-weight: bold;
+    }
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+    pre {
+      white-space: pre-wrap;
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 3px;
+      overflow-x: auto;
+    }
+    .btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .btn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>Supabase Connection Test</h1>
+  <p>Click the button below to test your connection to Supabase:</p>
+  
+  <button id="test-button" class="btn">Test Connection</button>
+  
+  <div id="result" class="result-box">
+    <p>Results will appear here...</p>
+  </div>
+
+  <script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+    
+    // Supabase credentials
+    const supabaseUrl = 'https://agvvkzsakrftkrqemfop.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFndnZrenNha3JmdGtycWVtZm9wIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU3NjY4MjcsImV4cCI6MjA2MTM0MjgyN30.-d8knn3iq-IDRZvdxW9VBTf95TTLaZg5fr5M9ABakaY';
+    
+    // Initialize the Supabase client
+    const supabase = createClient(supabaseUrl, supabaseKey);
+    
+    // Test connection function
+    async function testConnection() {
+      const resultElement = document.getElementById('result');
+      
+      try {
+        resultElement.innerHTML = '<p>Testing connection...</p>';
+        
+        // Try to query different tables to see what exists
+        const tablesArray = ['users', 'recipes', 'ingredients', 'meal_plans', 'shopping_lists'];
+        const results = {};
+        
+        for (const table of tablesArray) {
+          try {
+            const { data, error, count } = await supabase
+              .from(table)
+              .select('*', { count: 'exact' })
+              .limit(1);
+            
+            results[table] = {
+              exists: !error,
+              count: count || 0,
+              error: error ? error.message : null
+            };
+          } catch (err) {
+            results[table] = {
+              exists: false,
+              count: 0,
+              error: err.message
+            };
+          }
+        }
+        
+        // Display results
+        let html = '<h2 class="success">Connection established!</h2>';
+        html += '<h3>Tables Status:</h3>';
+        
+        for (const [table, status] of Object.entries(results)) {
+          html += `<div>
+            <strong>${table}:</strong> 
+            ${status.exists 
+              ? `<span class="success">Found</span> (${status.count} rows)` 
+              : `<span class="error">Not found</span> - ${status.error}`}
+          </div>`;
+        }
+        
+        resultElement.innerHTML = html;
+      } catch (error) {
+        resultElement.innerHTML = `
+          <h2 class="error">Connection Failed</h2>
+          <p>Error details:</p>
+          <pre>${error.message}</pre>
+        `;
+      }
+    }
+    
+    // Add click event listener
+    document.getElementById('test-button').addEventListener('click', testConnection);
+  </script>
+</body>
+</html> 
