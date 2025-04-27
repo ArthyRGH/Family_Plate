@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Family Meal Planner</title>
+  <link rel="stylesheet" href="src/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="logo">
+        <h1>Family Meal Planner</h1>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="auth-link"><a href="dashboard.html" class="active">Dashboard</a></li>
+          <li class="auth-link"><a href="meal-plan.html">Meal Plan</a></li>
+          <li class="non-auth-link" style="display: none;"><a href="login.html">Login</a></li>
+          <li class="non-auth-link" style="display: none;"><a href="register.html">Register</a></li>
+          <li class="auth-link"><a href="#" id="logout-button">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container dashboard-container">
+      <div class="dashboard-header">
+        <h1>Dashboard</h1>
+        <div class="user-greeting">
+          Welcome, <span class="user-info">User</span>!
+        </div>
+      </div>
+      
+      <div class="message-container"></div>
+      
+      <section class="recipes-section">
+        <div class="section-header">
+          <h2>Your Recipes</h2>
+          <button class="add-button" id="add-recipe-button">Add New Recipe</button>
+        </div>
+        
+        <div class="recipes-content">
+          <!-- Recipe cards will be dynamically loaded here -->
+          <div class="loading-indicator">Loading your recipes...</div>
+        </div>
+      </section>
+      
+      <section class="meal-plans-section">
+        <div class="section-header">
+          <h2>Your Meal Plans</h2>
+          <button class="add-button" id="create-meal-plan-button">Create New Meal Plan</button>
+        </div>
+        
+        <div class="meal-plans-content">
+          <!-- Meal plan cards will be dynamically loaded here -->
+          <div class="loading-indicator">Loading your meal plans...</div>
+        </div>
+      </section>
+      
+      <section class="shopping-lists-section">
+        <div class="section-header">
+          <h2>Your Shopping Lists</h2>
+          <button class="add-button" id="create-shopping-list-button">Create New Shopping List</button>
+        </div>
+        
+        <div class="shopping-lists-content">
+          <!-- Shopping list cards will be dynamically loaded here -->
+          <div class="loading-indicator">Loading your shopping lists...</div>
+        </div>
+      </section>
+      
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h2>Family Meal Planner</h2>
+        </div>
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="meal-plan.html">Meal Plan</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h3>Contact Us</h3>
+          <p>Email: support@familymealplanner.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Family Meal Planner. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="src/js/app.js"></script>
+</body>
+</html>
