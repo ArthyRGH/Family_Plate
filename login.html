@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Family Meal Planner</title>
+  <link rel="stylesheet" href="src/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="logo">
+        <h1>Family Meal Planner</h1>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="auth-link" style="display: none;"><a href="dashboard.html">Dashboard</a></li>
+          <li class="auth-link" style="display: none;"><a href="meal-plan.html">Meal Plan</a></li>
+          <li class="non-auth-link"><a href="login.html" class="active">Login</a></li>
+          <li class="non-auth-link"><a href="register.html">Register</a></li>
+          <li class="auth-link" style="display: none;"><a href="#" id="logout-link">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="auth-container">
+      <div class="auth-header">
+        <h2>Login to Your Account</h2>
+      </div>
+      
+      <div id="login-message" class="message-container"></div>
+      
+      <form id="login-form" class="auth-form">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        
+        <div class="form-group">
+          <button type="submit">Login</button>
+        </div>
+      </form>
+      
+      <div class="auth-footer">
+        <p>Don't have an account? <a href="register.html">Sign up</a></p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h2>Family Meal Planner</h2>
+        </div>
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h3>Contact Us</h3>
+          <p>Email: support@familymealplanner.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Family Meal Planner. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="src/js/app.js"></script>
+</body>
+</html>
