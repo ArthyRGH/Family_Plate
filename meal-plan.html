@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meal Plan - Family Meal Planner</title>
+  <link rel="stylesheet" href="src/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="logo">
+        <h1>Family Meal Planner</h1>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="auth-link"><a href="dashboard.html">Dashboard</a></li>
+          <li class="auth-link"><a href="meal-plan.html" class="active">Meal Plan</a></li>
+          <li class="non-auth-link" style="display: none;"><a href="login.html">Login</a></li>
+          <li class="non-auth-link" style="display: none;"><a href="register.html">Register</a></li>
+          <li class="auth-link"><a href="#" id="logout-button">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="section-header">
+        <h2>Create New Meal Plan</h2>
+      </div>
+      
+      <div class="message-container"></div>
+      
+      <div class="meal-planner-container">
+        <form class="meal-plan-form">
+          <div class="form-group">
+            <label for="meal-plan-title">Meal Plan Title</label>
+            <input type="text" id="meal-plan-title" name="meal-plan-title" class="edit-control" required>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="start-date">Start Date</label>
+              <input type="date" id="start-date" name="start-date" class="edit-control" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="end-date">End Date</label>
+              <input type="date" id="end-date" name="end-date" class="edit-control" required>
+            </div>
+          </div>
+        </form>
+        
+        <div class="meal-plan-grid">
+          <!-- Meal plan grid will be dynamically generated here -->
+          <div class="loading-indicator">Loading meal plan...</div>
+        </div>
+        
+        <div class="meal-plan-actions">
+          <button id="generate-shopping-list" class="button">Generate Shopping List</button>
+          <button id="cancel-meal-plan" class="button">Cancel</button>
+          <button id="save-meal-plan" class="button">Create Meal Plan</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h2>Family Meal Planner</h2>
+        </div>
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="meal-plan.html">Meal Plan</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h3>Contact Us</h3>
+          <p>Email: support@familymealplanner.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Family Meal Planner. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="src/js/app.js"></script>
+</body>
+</html>
